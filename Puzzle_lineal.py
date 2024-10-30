@@ -15,7 +15,6 @@ def buscar_solucion_BFS(estado_inicial, solucion):
         else:
             dato_nodo = nodo.get_datos()
 
-
             # Operador Izquierdo
             hijo = [dato_nodo[1], dato_nodo[0], dato_nodo[2], dato_nodo[3]]
             hijo_izquierdo = Nodo(hijo, nodo)
@@ -38,3 +37,18 @@ def buscar_solucion_BFS(estado_inicial, solucion):
             
             
                 nodos_frontera.append(hijo_derecho)
+
+if __name__ == "__main__":
+    estado_inicial = [4, 2, 3, 1]
+    solucion = [1, 2, 3, 4]
+    nodo_solucion = buscar_solucion_BFS(estado_inicial, solucion)
+    
+    # Mostrar el resultado
+    resultado = []
+    nodo = nodo_solucion
+    while nodo.get_padre() is not None:
+        resultado.append(nodo.get_datos())
+        nodo = nodo.get_padre()
+    resultado.append(estado_inicial)
+    resultado.reverse()
+    print(resultado)
